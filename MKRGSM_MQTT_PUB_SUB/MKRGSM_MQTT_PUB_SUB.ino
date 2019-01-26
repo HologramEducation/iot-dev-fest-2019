@@ -33,11 +33,11 @@ const char GPRS_PASSWORD[] = SECRET_GPRS_PASSWORD;
 
 GPRS gprs;
 GSM gsmAccess;
-GSMSSLClient gsmClient;
+GSMClient gsmClient;
 MqttClient mqttClient(gsmClient);
 
-const char broker[] = "some.secure.server";
-int        port     = 8883;
+const char broker[] = "iot.eclipse.org";
+int        port     = 1883;
 const char topic[]  = "hologram/to";
 const char publishTopic[]  = "hologram/from";
 
@@ -112,7 +112,7 @@ void loop() {
   mqttClient.poll();
 
   // Set the rate at which we send our values
-  delay(500);
+  delay(1500);
   
   // read the first Analog pin
   int sensorVal = analogRead(0);
